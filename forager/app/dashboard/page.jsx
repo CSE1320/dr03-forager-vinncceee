@@ -16,7 +16,7 @@ export default function DashboardPage() {
     { imageSrc: "/icons/deathCapImg.png", title: "Death Cap", showWarning: true },
     { imageSrc: "/icons/puffballimg.png", title: "Puffball", showWarning: false },
     { imageSrc: "/icons/destroyingangelimg.png", title: "Destroying Angel", showWarning: true },
-    { imageSrc: "/icons/falsedeathimg.png", title: "False Death Cap", showWarning: false },
+    { imageSrc: "/icons/falsedeathimg.png", title: "False Death Cap", showWarning: true }, // ✅ Updated
     { imageSrc: "/icons/paddystrawimg.png", title: "Paddy Straw", showWarning: false }
   ];
 
