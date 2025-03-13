@@ -23,8 +23,6 @@ export default function DashboardPage() {
         <h2 className="text-white text-[45px] font-extrabold leading-[40px]">Chantelle!</h2>
       </div>
 
-      <NavBar />
-
       {/* Profile Circle "C" */}
       <div className="absolute top-[7rem] right-7 w-[41px] h-[41px] bg-[#5F464B] rounded-full flex items-center justify-center">
         <span className="text-white text-[20px] font-bold">C</span>
@@ -39,7 +37,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Section Title */}
-        <h2 className="text-[#324053] font-nunito text-[25px] font-bold mt-6 self-start">
+        <h2 className="text-[#324053] font-nunito text-[25px] font-bold mt-10 self-start">
           My Collection
         </h2>
 
@@ -55,12 +53,15 @@ export default function DashboardPage() {
 
       {/* Filter Modal - Show when `isFilterOpen` is true */}
       {isFilterOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="w-[380px] h-[806px] bg-[#F2F2F2] rounded-[20px] flex flex-col p-6 shadow-lg">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[100]">
+          <div className="w-[380px] h-[806px] bg-[#F2F2F2] rounded-[20px] flex flex-col p-6 shadow-lg z-[110] relative">
             <FilterSettings onClose={() => setIsFilterOpen(false)} />
           </div>
         </div>
       )}
+
+      {/* NavBar - Ensure it Stays Below the Modal */}
+      <NavBar className="z-[50]" />
     </div>      
   );
 }

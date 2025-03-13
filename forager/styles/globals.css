@@ -1,5 +1,22 @@
 /* Global styles */
-body, html{
+:root {
+  --Primary: #579076; /* Selected state */
+  --Selected: #2E7D32; /* Darker green when selected */
+  --Unselected: #7C7C7C; /* Gray for unselected */
+  --UnselectedText: #FFFFFF; /* White text for contrast */
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
   width: 100%;
   height: 100%;
+  overflow: hidden; /* Prevents unwanted scrolling */
+  font-family: 'Nunito', sans-serif; /* Apply a default font */
+  background-color: var(--Primary, #579076); /* Uses CSS variable */
 }
