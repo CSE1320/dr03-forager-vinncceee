@@ -6,20 +6,24 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #ffffff;
+    width: 414px;
+    height: 84px;
+    flex-shrink: 0;
+    border-radius: 20px 20px 0px 0px;
+    background-color: #579076;
     padding: 10px 0;
     z-index: 100;
   }
   
   .navItem {
-    font-size: 24px;
+    font-size: 40px;
     cursor: pointer;
     flex: 1;
     text-align: center;
   }
   
   .navItem:hover {
-    background-color: #f0f0f0;
+    background-color: #B6EEA6;
     border-radius: 10px;
     transition: background-color 0.3s ease;
   }

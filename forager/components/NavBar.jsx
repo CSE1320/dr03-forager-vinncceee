@@ -1,6 +1,4 @@
 import Link from 'next/link';
-import { FaHome, FaSearch } from 'react-icons/fa';
-import { TbMushroom } from "react-icons/tb";
 import styles from '../styles/NavBar.module.css'; // Import the styles for the NavBar
 
 export default function NavBar() {
@@ -8,17 +6,17 @@ export default function NavBar() {
     <div className={styles.navbar}>
       <Link href="/mushroom" passHref>
         <div className={styles.navItem}>
-          <TbMushroom />
+          <img src="/icons/mushroom.svg" alt="Mushroom" width="40" height="40" />
         </div>
       </Link>
       <Link href="/dashboard" passHref>
         <div className={styles.navItem}>
-          <FaHome />
+          <img src="/icons/home.svg" alt="Home" width="40" height="40" />
         </div>
       </Link>
       <Link href="/photosearch" passHref>
         <div className={styles.navItem}>
-          <FaSearch />
+          <img src="/icons/camera.svg" alt="Camera" width="40" height="40" />
         </div>
       </Link>
     </div>

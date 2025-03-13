@@ -2,9 +2,9 @@
 ####################### Makefile Template ##############################
 ########################################################################
 # Student settings
-NAME = YOURNAME
-SID = YOURSID
-EMAIL = YOURUTAEMAIL
+NAME = Vince Banks
+SID = 1001702150
+EMAIL = vincevennedick.banks@mavs.uta.edu
 SEMESTER = SPRING2025
 PROJECT=PROJ03
  
