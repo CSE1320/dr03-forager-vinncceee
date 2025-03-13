@@ -1,9 +1,8 @@
 "use client";
-
 import React from "react";
 import { FaSearch } from "react-icons/fa";
 
-export default function Search({ onFilterClick }) {
+export default function Search({ onFilterClick, onSearchChange }) {
   return (
     <div className="flex items-center gap-3">
       {/* Search Bar */}
@@ -13,6 +12,7 @@ export default function Search({ onFilterClick }) {
           type="text"
           placeholder="Search..."
           className="w-full h-full bg-transparent outline-none text-gray-700"
+          onChange={(e) => onSearchChange(e.target.value)} // ✅ Update search state
         />
       </div>
 

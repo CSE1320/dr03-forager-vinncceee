@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import MushroomCard from "@/components/MushroomCard";
 import NavBar from "../../components/NavBar"; 
 import Search from "../../components/Search";  
@@ -7,7 +8,22 @@ import Pill from "../../components/Pill";
 import FilterSettings from "@/components/FilterSettings";
 
 export default function DashboardPage() {
-  const [isFilterOpen, setIsFilterOpen] = useState(false); // Controls filter modal visibility
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState(""); // ✅ Search State
+
+  // ✅ Mushroom Data (Replace with dynamic data if needed)
+  const mushrooms = [
+    { imageSrc: "/icons/deathCapImg.png", title: "Death Cap", showWarning: true },
+    { imageSrc: "/icons/puffballimg.png", title: "Puffball", showWarning: false },
+    { imageSrc: "/icons/destroyingangelimg.png", title: "Destroying Angel", showWarning: true },
+    { imageSrc: "/icons/falsedeathimg.png", title: "False Death Cap", showWarning: false },
+    { imageSrc: "/icons/paddystrawimg.png", title: "Paddy Straw", showWarning: false }
+  ];
+
+  // ✅ Filtered Mushrooms based on search term
+  const filteredMushrooms = mushrooms.filter((mushroom) =>
+    mushroom.title.toLowerCase().includes(searchTerm.toLowerCase()) // 🔍 Matching Logic
+  );
 
   return (
     <div className="w-[414px] h-[896px] mx-auto bg-[#397367] shadow-lg overflow-hidden flex flex-col relative">
@@ -31,10 +47,8 @@ export default function DashboardPage() {
       {/* Rectangle Background */}
       <div className="absolute bottom-0 w-[414px] h-[713px] bg-[#F2F2F2] rounded-t-[41px] flex flex-col pt-6 px-6">
         
-        {/* Search Bar with Filter Icon */}
-        <div className="flex items-center justify-between w-full">
-          <Search onFilterClick={() => setIsFilterOpen(true)} />
-        </div>
+        {/* ✅ Search Bar - Pass setSearchTerm to update the search input */}
+        <Search onFilterClick={() => setIsFilterOpen(true)} onSearchChange={setSearchTerm} />
 
         {/* Section Title */}
         <h2 className="text-[#324053] font-nunito text-[25px] font-bold mt-10 self-start">
@@ -47,13 +61,22 @@ export default function DashboardPage() {
           <Pill label="Favorites" isSelected={true} />
         </div>
 
-        {/* ✅ Mushroom Cards Grid */}
+        {/* ✅ Mushroom Cards Grid - Display only filtered mushrooms */}
         <div className="grid grid-cols-3 gap-4 mt-6 justify-center">
-          <MushroomCard imageSrc="/icons/deathCapImg.png" title="Death Cap" showWarning={true} />
-          <MushroomCard imageSrc="/icons/puffballimg.png" title="Puffball" showWarning={false} />
-          <MushroomCard imageSrc="/icons/destroyingangelimg.png" title="Destroying Angel" showWarning={true} />
-          <MushroomCard imageSrc="/icons/falsedeathimg.png" title="Paddy Straw" showWarning={false} />
-          <MushroomCard imageSrc="/icons/paddystrawimg.png" title="Paddy Straw" showWarning={false} />
+          {filteredMushrooms.length > 0 ? (
+            filteredMushrooms.map((mushroom, index) => (
+              <MushroomCard 
+                key={index}
+                imageSrc={mushroom.imageSrc}
+                title={mushroom.title}
+                showWarning={mushroom.showWarning}
+              />
+            ))
+          ) : (
+            <p className="text-gray-500 text-center col-span-3 mt-6">
+              No mushrooms found.
+            </p>
+          )}
         </div>
       </div>
 
