@@ -2,28 +2,39 @@
 import { useState } from "react";
 import Link from "next/link";
 import MushroomCard from "@/components/MushroomCard";
-import NavBar from "../../components/NavBar"; 
-import Search from "../../components/Search";  
-import Pill from "../../components/Pill"; 
+import NavBar from "../../components/NavBar";
+import Search from "../../components/Search";
+import Pill from "../../components/Pill";
 import FilterSettings from "@/components/FilterSettings";
 
 export default function DashboardPage() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState(""); // ✅ Search State
+  const [searchTerm, setSearchTerm] = useState(""); // 🔍 Search State
+  const [selectedFilters, setSelectedFilters] = useState({
+    tags: [],
+    regions: [],
+    category: []
+  });
 
   // ✅ Mushroom Data (Replace with dynamic data if needed)
   const mushrooms = [
-    { imageSrc: "/icons/deathCapImg.png", title: "Death Cap", showWarning: true },
-    { imageSrc: "/icons/puffballimg.png", title: "Puffball", showWarning: false },
-    { imageSrc: "/icons/destroyingangelimg.png", title: "Destroying Angel", showWarning: true },
-    { imageSrc: "/icons/falsedeathimg.png", title: "False Death Cap", showWarning: true }, // ✅ Updated
-    { imageSrc: "/icons/paddystrawimg.png", title: "Paddy Straw", showWarning: false }
+    { imageSrc: "/icons/deathCapImg.png", title: "Death Cap", showWarning: true, category: "Poisonous", tags: "Favorites", region: "Texas" },
+    { imageSrc: "/icons/puffballimg.png", title: "Puffball", showWarning: false, category: "Good for Broths", tags: "", region: "North America" },
+    { imageSrc: "/icons/destroyingangelimg.png", title: "Destroying Angel", showWarning: true, category: "Poisonous", tags: "Favorites", region: "Europe" },
+    { imageSrc: "/icons/falsedeathimg.png", title: "False Death Cap", showWarning: true, category: "Poisonous", tags: "", region: "Texas" },
+    { imageSrc: "/icons/paddystrawimg.png", title: "Paddy Straw", showWarning: false, category: "Medicinal", tags: "", region: "Asia" }
   ];
 
-  // ✅ Filtered Mushrooms based on search term
-  const filteredMushrooms = mushrooms.filter((mushroom) =>
-    mushroom.title.toLowerCase().includes(searchTerm.toLowerCase()) // 🔍 Matching Logic
-  );
+  // ✅ Filter mushrooms based on selected filters
+  const filteredMushrooms = mushrooms.filter((mushroom) => {
+    const matchesSearch = mushroom.title.toLowerCase().includes(searchTerm.toLowerCase());
+
+    const matchesTags = selectedFilters.tags.length === 0 || selectedFilters.tags.includes(mushroom.tags);
+    const matchesRegion = selectedFilters.regions.length === 0 || selectedFilters.regions.includes(mushroom.region);
+    const matchesCategory = selectedFilters.category.length === 0 || selectedFilters.category.includes(mushroom.category);
+
+    return matchesSearch && matchesTags && matchesRegion && matchesCategory;
+  });
 
   return (
     <div className="w-[414px] h-[896px] mx-auto bg-[#397367] shadow-lg overflow-hidden flex flex-col relative">
@@ -39,7 +50,7 @@ export default function DashboardPage() {
         <h2 className="text-white text-[45px] font-extrabold leading-[40px]">Chantelle!</h2>
       </div>
 
-      {/* Profile Circle "C" */}
+      {/* Profile Circle */}
       <div className="absolute top-[7rem] right-7 w-[41px] h-[41px] bg-[#5F464B] rounded-full flex items-center justify-center">
         <span className="text-white text-[20px] font-bold">C</span>
       </div>
@@ -47,7 +58,7 @@ export default function DashboardPage() {
       {/* Rectangle Background */}
       <div className="absolute bottom-0 w-[414px] h-[713px] bg-[#F2F2F2] rounded-t-[41px] flex flex-col pt-6 px-6">
         
-        {/* ✅ Search Bar - Pass setSearchTerm to update the search input */}
+        {/* ✅ Search Bar with Filter Icon */}
         <Search onFilterClick={() => setIsFilterOpen(true)} onSearchChange={setSearchTerm} />
 
         {/* Section Title */}
@@ -55,11 +66,14 @@ export default function DashboardPage() {
           My Collection
         </h2>
 
-        {/* Pill Filters */}
-        <div className="flex gap-2 mt-1 self-start">
-          <Pill label="Texas" isSelected={true} />
-          <Pill label="Favorites" isSelected={true} />
-        </div>
+        {/* ✅ Selected Filters (Shows Below "My Collection") */}
+        {selectedFilters.tags.length > 0 || selectedFilters.regions.length > 0 || selectedFilters.category.length > 0 ? (
+          <div className="flex flex-wrap gap-2 mt-3 self-start">
+            {selectedFilters.tags.map(tag => <Pill key={tag} label={tag} isSelected={true} />)}
+            {selectedFilters.regions.map(region => <Pill key={region} label={region} isSelected={true} />)}
+            {selectedFilters.category.map(category => <Pill key={category} label={category} isSelected={true} />)}
+          </div>
+        ) : null}
 
         {/* ✅ Mushroom Cards Grid - Display only filtered mushrooms */}
         <div className="grid grid-cols-3 gap-4 mt-6 justify-center">
@@ -84,7 +98,11 @@ export default function DashboardPage() {
       {isFilterOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[100]">
           <div className="w-[380px] h-[806px] bg-[#F2F2F2] rounded-[20px] flex flex-col p-6 shadow-lg z-[110] relative">
-            <FilterSettings onClose={() => setIsFilterOpen(false)} />
+            <FilterSettings 
+              onClose={() => setIsFilterOpen(false)}
+              selectedFilters={selectedFilters}
+              setSelectedFilters={setSelectedFilters} 
+            />
           </div>
         </div>
       )}
