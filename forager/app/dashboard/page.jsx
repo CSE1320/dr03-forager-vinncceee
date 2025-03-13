@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import MushroomCard from "@/components/mushroomCard";
+import MushroomCard from "@/components/MushroomCard";
 import NavBar from "../../components/NavBar"; 
 import Search from "../../components/Search";  
 import Pill from "../../components/Pill"; 
@@ -42,13 +42,19 @@ export default function DashboardPage() {
         </h2>
 
         {/* Pill Filters */}
-        <div className="flex gap-2 mt-3 self-start">
+        <div className="flex gap-2 mt-1 self-start">
           <Pill label="Texas" isSelected={true} />
           <Pill label="Favorites" isSelected={true} />
         </div>
 
-        {/* Mushroom Card */}
-        <MushroomCard />
+        {/* ✅ Mushroom Cards Grid */}
+        <div className="grid grid-cols-3 gap-4 mt-6 justify-center">
+          <MushroomCard imageSrc="/icons/deathCapImg.png" title="Death Cap" showWarning={true} />
+          <MushroomCard imageSrc="/icons/puffballimg.png" title="Puffball" showWarning={false} />
+          <MushroomCard imageSrc="/icons/destroyingangelimg.png" title="Destroying Angel" showWarning={true} />
+          <MushroomCard imageSrc="/icons/falsedeathimg.png" title="Paddy Straw" showWarning={false} />
+          <MushroomCard imageSrc="/icons/paddystrawimg.png" title="Paddy Straw" showWarning={false} />
+        </div>
       </div>
 
       {/* Filter Modal - Show when `isFilterOpen` is true */}
