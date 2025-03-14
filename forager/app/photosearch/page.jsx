@@ -5,7 +5,6 @@ export default function PhotoSearchPage() {
     <>
       <BackgroundScreen />
       <div className="relative z-10">
-        {/* Add your page content here */}
       </div>
     </>
   );

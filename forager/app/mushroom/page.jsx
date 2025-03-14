@@ -26,7 +26,6 @@ export default function MushroomPage() {
     sessionStorage.setItem("messageDismissed", "true");
   };
 
-  // ✅ Function to Add Favorite Tag
   const handleAddFavorite = (title) => {
     setMushrooms((prevMushrooms) =>
       prevMushrooms.map((mushroom) =>
@@ -37,8 +36,6 @@ export default function MushroomPage() {
 
   return (
     <div className="w-[414px] h-screen mx-auto bg-[#F2F2F2] flex flex-col">
-      
-      {/* ✅ Top Section */}
       <div className="w-[414px] h-[117px] bg-[#579076] rounded-b-[40px] shadow-md flex items-center justify-center relative flex-shrink-0">
         <button onClick={() => router.back()} className="absolute left-0 top-[70%] transform -translate-y-1/2">
           <img src="/icons/backButton.svg" alt="Back" className=" ml-15 w-[60px] h-[70px] " />
@@ -47,14 +44,8 @@ export default function MushroomPage() {
           Match Results
         </h1>
       </div>
-
-      {/* ✅ Scrollable Content Section */}
       <div className="flex-1 w-full overflow-y-auto px-4 pb-40">
-        
-        {/* ✅ Show Message Only If Not Dismissed */}
         {showMessage && <Message onClose={handleCloseMessage} />}
-
-        {/* ✅ "Not What You Expected?" & Report Error */}
         <div className="flex items-center justify-between mt-2 px-4">
           <p className="text-[#314053] text-[13px] font-nunito font-normal ml-8">Not what you expected?</p>
           <button className="w-[120px] h-[35px] bg-[#FF5050] text-white text-[14px] font-nunito font-bold last:rounded-[10px] flex items-center justify-center whitespace-nowrap pr-1 px-3 mr-8">
@@ -62,15 +53,11 @@ export default function MushroomPage() {
             <img src="/icons/rightButton.svg" alt=">" className="w-8 h-8" />
           </button>
         </div>
-
-        {/* ✅ Warning Label (Left-Aligned) */}
         <WarningLabel />
-        
-        {/* ✅ Compare Button (Navigates to /comparison) */}
         <div className="w-full flex justify-end mt-6 pr-10">
           <button 
             className="flex items-center bg-transparent border-none cursor-pointer"
-            onClick={() => router.push("/comparison")} // ✅ Click to navigate
+            onClick={() => router.push("/comparison")}
           >
             <span className="text-[#888787] text-[14px] font-nunito font-normal">
               Compare
@@ -78,17 +65,9 @@ export default function MushroomPage() {
             <img src="/icons/rightIcon.svg" alt=">" className="w-5 h-5 ml-1" />
           </button>
         </div>
-
-        {/* ✅ Mushroom Component - Pass `handleAddFavorite` */}
         <Mushroom onAddFavorite={handleAddFavorite} />
-        
         <MushroomList />
-        
-        
       </div>
-      
-      
-      {/* ✅ NavBar - Stays at the Bottom */}
       <NavBar />
     </div>
   );

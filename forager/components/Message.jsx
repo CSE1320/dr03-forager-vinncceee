@@ -1,20 +1,17 @@
+"use client";
+
 import React from 'react';
 
 const Message = ({ onClose }) => {
     return (
         <div className="fixed inset-0 flex items-center justify-center z-50">
-            {/* ✅ Blurred & Darkened Background Overlay */}
             <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
-
-            {/* ✅ Message Box (Placed Above Overlay) */}
             <div 
                 className="relative z-10 bg-[#FF5050] text-sm font-medium text-white rounded-xl flex flex-col border border-black px-[19px] pr-[14px] py-4"
                 style={{ width: "315px", height: "206px", flexShrink: 0 }}
             >
-                {/* ✅ Header Section */}
                 <div className="header flex items-center justify-between mb-2">
                     <div className="flex items-center">
-                        {/* ✅ Warning Icon */}
                         <img 
                             src="/icons/warningIcon.svg" 
                             alt="Warning Icon" 
@@ -24,8 +21,6 @@ const Message = ({ onClose }) => {
                         />
                         <h1 className="uppercase text-lg font-bold">ATTENTION!</h1>
                     </div>
-                    
-                    {/* ✅ X Button to Dismiss */}
                     <button onClick={onClose} className="ml-auto cursor-pointer">
                         <img 
                             src="/icons/xButtonWhite.svg" 
@@ -35,8 +30,6 @@ const Message = ({ onClose }) => {
                         />
                     </button>
                 </div>
-
-                {/* ✅ Warning Message */}
                 <p 
                     className="text-[16px] text-left"
                     style={{ width: "282px", height: "155.773px", flexShrink: 0 }}
