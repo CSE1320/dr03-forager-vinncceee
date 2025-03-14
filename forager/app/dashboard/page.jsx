@@ -7,6 +7,7 @@ import Search from "../../components/Search";
 import Pill from "../../components/Pill";
 import FilterSettings from "@/components/FilterSettings";
 
+
 export default function DashboardPage() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState(""); // 🔍 Search State
