@@ -2,9 +2,13 @@ import React from 'react';
 
 const Message = ({ onClose }) => {
     return (
-        <div className="fixed inset-0 flex items-center justify-center">
+        <div className="fixed inset-0 flex items-center justify-center z-50">
+            {/* ✅ Blurred & Darkened Background Overlay */}
+            <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
+
+            {/* ✅ Message Box (Placed Above Overlay) */}
             <div 
-                className="message bg-[#FF5050] text-sm font-medium text-white rounded-xl flex flex-col border border-black px-[19px] pr-[14px] py-4"
+                className="relative z-10 bg-[#FF5050] text-sm font-medium text-white rounded-xl flex flex-col border border-black px-[19px] pr-[14px] py-4"
                 style={{ width: "315px", height: "206px", flexShrink: 0 }}
             >
                 {/* ✅ Header Section */}
