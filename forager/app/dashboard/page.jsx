@@ -19,7 +19,7 @@ export default function DashboardPage() {
 
   // ✅ Mushroom Data with State
   const [mushrooms, setMushrooms] = useState([
-    { imageSrc: "/icons/deathCapImg.png", title: "Death Cap", showWarning: true, category: "Poisonous", tags: "", region: "Texas" },
+    { imageSrc: "/icons/deathCapImg.png", title: "Death Cap", showWarning: true, category: "Poisonous", tags: "Favorites", region: "Texas" },
     { imageSrc: "/icons/puffballimg.png", title: "Puffball", showWarning: false, category: "Good for Broths", tags: "", region: "North America" },
     { imageSrc: "/icons/destroyingangelimg.png", title: "Destroying Angel", showWarning: true, category: "Poisonous", tags: "", region: "Europe" },
     { imageSrc: "/icons/falsedeathimg.png", title: "False Death Cap", showWarning: true, category: "Poisonous", tags: "", region: "Texas" },
