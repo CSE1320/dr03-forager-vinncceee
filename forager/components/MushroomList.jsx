@@ -19,7 +19,7 @@ const MushroomList = () => {
       </h2>
 
       {/* ✅ Wrapper to center grid */}
-      <div className="w-[290px] flex flex-col items-center">
+      <div className="w-[290px] flex flex-col items-center ml-4">
         {/* ✅ 2-Column Grid for Mushroom Cards */}
         <div className="grid grid-cols-2 gap-2 w-full justify-center">
           {mushrooms.map((mushroom, index) => (
