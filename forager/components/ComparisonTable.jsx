@@ -76,7 +76,7 @@ const ComparisonTable = () => {
     };
 
   return (
-    <div className="w-full flex flex-col items-center justify-center">
+    <div className="w-full flex flex-col items-center justify-center mt-10">
       {/* ✅ Image Comparison */}
       <div className="flex justify-center gap-10">
         {/* ✅ Your Photo */}
@@ -115,7 +115,7 @@ const ComparisonTable = () => {
       </div>
 
       {/* ✅ Table Comparison - Editable Left Column */}
-      <div className="relative w-[400px] mt-9 mr-2">
+      <div className="relative w-[400px] mt-9 ">
         {/* ✅ Left Vertical Line (Full Height) */}
         <div className="absolute left-[120px] top-0 bottom-0 h-full border-l-[2px] border-black"></div>
 
@@ -140,7 +140,7 @@ const ComparisonTable = () => {
                   ref={(el) => (inputRefs.current[row.label] = el)} // Store input reference
                   value={userValues[row.label]} 
                   onChange={(e) => handleChange(row.label, e.target.value)}
-                  className="w-full bg-transparent text-center focus:outline-none"
+                  className="w-full bg-transparent text-center focus:outline-none text-[17px]"
                 />
 
                 {/* ✅ Clickable `?` Icon That Focuses Input on Single Click */}
@@ -165,7 +165,7 @@ const ComparisonTable = () => {
               </span>
 
               {/* ✅ Right Column - Compared Mushroom's attribute */}
-              <div className="w-[90px] text-[#324053] text-[18px] font-nunito font-bold flex flex-col items-center justify-center pb-1">
+              <div className="w-[90px] text-[#324053] text-[18px] font-nunito font-bold flex flex-col items-center justify-center pb-1 ml-2">
                 {row.label === "Habitat" ? (
                   <span className="text-center">
                     Near Oak/<br />Beech
