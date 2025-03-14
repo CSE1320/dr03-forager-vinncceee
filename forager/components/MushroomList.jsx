@@ -12,23 +12,28 @@ const mushrooms = [
 
 const MushroomList = () => {
   return (
-    <div className="flex flex-col items-center w-full">
+    <div className="w-full flex flex-col items-center justify-center "> {/* ✅ Full width, centered */}
       {/* ✅ Similar Matches Header */}
-      <h2 className="text-[#324053] font-nunito text-[20px] font-bold mb-4">
+      <h2 className="w-full text-center text-[#324053] font-nunito text-[25px] font-bold mb-3 mr-8">
         Similar Matches
       </h2>
 
-      {/* ✅ 2-Column Grid for Mushroom Cards */}
-      <div className="grid grid-cols-2 gap-4">
-        {mushrooms.map((mushroom, index) => (
-          <MushroomCard
-            key={index}
-            imageSrc={mushroom.imageSrc}
-            title={mushroom.title}
-            accuracy={mushroom.accuracy}
-            showWarning={mushroom.showWarning}
-          />
-        ))}
+
+      {/* ✅ Wrapper to center grid */}
+      <div className="w-[290px] flex flex-col items-center">
+        {/* ✅ 2-Column Grid for Mushroom Cards */}
+        <div className="grid grid-cols-2 gap-2 w-full justify-center">
+          {mushrooms.map((mushroom, index) => (
+            <div key={index} className="w-[131px] h-[160px] flex-shrink-0">
+              <MushroomCard
+                imageSrc={mushroom.imageSrc}
+                title={mushroom.title}
+                accuracy={mushroom.accuracy}
+                showWarning={mushroom.showWarning}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

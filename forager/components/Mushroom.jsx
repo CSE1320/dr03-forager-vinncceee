@@ -17,7 +17,7 @@ const Mushroom = ({ onAddFavorite }) => {
   };
 
   return (
-    <div className="w-full flex flex-col items-center px-4">
+    <div className="w-full flex flex-col items-center px-4 -mt-3">
       {/* ✅ Custom Polaroid Frame */}
       <div className="w-[290px] h-[290px] flex-shrink-0 bg-white shadow-md flex flex-col items-center justify-start relative mt-4"
         style={{ boxShadow: "2px 4px 4px 0px rgba(168, 148, 148, 0.25)" }}>
@@ -79,7 +79,7 @@ const Mushroom = ({ onAddFavorite }) => {
       </div>
 
       {/* ✅ Additional Description Section */}
-      <div className="w-[290px] h-[264px] flex-shrink-0 text-[#000] font-nunito text-[16px] font-normal leading-[25px] mt-4">
+      <div className="w-[290px] h-[264px] flex-shrink-0 text-[#000] font-nunito text-[16px] font-normal leading-[25px] mt-4 -mb-12">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.

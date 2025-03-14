@@ -6,6 +6,7 @@ import NavBar from "../../components/NavBar";
 import Message from "@/components/Message";
 import WarningLabel from "@/components/WarningLabel";
 import Mushroom from "@/components/Mushroom";
+import MushroomList from "@/components/MushroomList";
 
 export default function MushroomPage() {
   const router = useRouter();
@@ -48,7 +49,7 @@ export default function MushroomPage() {
       </div>
 
       {/* ✅ Scrollable Content Section */}
-      <div className="flex-1 w-full overflow-y-auto px-4 pb-20">
+      <div className="flex-1 w-full overflow-y-auto px-4 pb-40">
         
         {/* ✅ Show Message Only If Not Dismissed */}
         {showMessage && <Message onClose={handleCloseMessage} />}
@@ -66,7 +67,7 @@ export default function MushroomPage() {
         <WarningLabel />
         
         {/* ✅ Compare Button (Navigates to /comparison) */}
-        <div className="w-full flex justify-end mt-8 pr-10">
+        <div className="w-full flex justify-end mt-6 pr-10">
           <button 
             className="flex items-center bg-transparent border-none cursor-pointer"
             onClick={() => router.push("/comparison")} // ✅ Click to navigate
@@ -80,14 +81,13 @@ export default function MushroomPage() {
 
         {/* ✅ Mushroom Component - Pass `handleAddFavorite` */}
         <Mushroom onAddFavorite={handleAddFavorite} />
-
-        {/* ✅ Example Content */}
-        <div className="mt-4 space-y-4">
-          <p className="text-center text-gray-700">Scrollable content goes here...</p>
-          <div className="h-[1000px] bg-gray-200">Extra scrollable space</div>
-        </div>
+        
+        <MushroomList />
+        
+        
       </div>
-
+      
+      
       {/* ✅ NavBar - Stays at the Bottom */}
       <NavBar />
     </div>
