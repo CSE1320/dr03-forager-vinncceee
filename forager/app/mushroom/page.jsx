@@ -26,14 +26,6 @@ export default function MushroomPage() {
     sessionStorage.setItem("messageDismissed", "true");
   };
 
-  const handleAddFavorite = (title) => {
-    setMushrooms((prevMushrooms) =>
-      prevMushrooms.map((mushroom) =>
-        mushroom.title === title ? { ...mushroom, tags: "Favorites" } : mushroom
-      )
-    );
-  };
-
   return (
     <div className="w-[414px] h-screen mx-auto bg-[#F2F2F2] flex flex-col">
       <div className="w-[414px] h-[117px] bg-[#579076] rounded-b-[40px] shadow-md flex items-center justify-center relative flex-shrink-0">
@@ -65,7 +57,7 @@ export default function MushroomPage() {
             <img src="/icons/rightIcon.svg" alt=">" className="w-5 h-5 ml-1" />
           </button>
         </div>
-        <Mushroom onAddFavorite={handleAddFavorite} />
+        <Mushroom />
         <MushroomList />
       </div>
       <NavBar />
