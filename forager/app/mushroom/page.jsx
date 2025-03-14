@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import NavBar from "../../components/NavBar";
 import Message from "@/components/Message";
 import WarningLabel from "@/components/WarningLabel";
+import Mushroom from "@/components/Mushroom";
 
 export default function MushroomPage() {
   const router = useRouter();
@@ -54,6 +55,7 @@ export default function MushroomPage() {
 
         {/* ✅ Warning Label (Left-Aligned) */}
         <WarningLabel />
+        <Mushroom />
         
         {/* ✅ Compare Button (Navigates to /comparison) */}
         <div className="w-full flex justify-end mt-6">
