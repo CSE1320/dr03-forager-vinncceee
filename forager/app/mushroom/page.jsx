@@ -55,10 +55,10 @@ export default function MushroomPage() {
 
         {/* ✅ Warning Label (Left-Aligned) */}
         <WarningLabel />
-        <Mushroom />
+        
         
         {/* ✅ Compare Button (Navigates to /comparison) */}
-        <div className="w-full flex justify-end mt-6">
+        <div className="w-full flex justify-end mt-8 pr-10">
           <button 
             className="flex items-center bg-transparent border-none cursor-pointer"
             onClick={() => router.push("/comparison")} // ✅ Click to navigate
@@ -69,7 +69,7 @@ export default function MushroomPage() {
             <img src="/icons/rightIcon.svg" alt=">" className="w-5 h-5 ml-1" />
           </button>
         </div>
-
+        <Mushroom />
         {/* ✅ Example Content */}
         <div className="mt-4 space-y-4">
           <p className="text-center text-gray-700">Scrollable content goes here...</p>
