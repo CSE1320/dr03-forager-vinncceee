@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation"; 
 import NavBar from "../../components/NavBar";
 import WarningLabel from "../../components/WarningLabel"; // ✅ Import WarningLabel
+import ComparisonTable from "@/components/ComparisonTable";
 
 export default function MushroomComparisonPage() {
   const router = useRouter();
@@ -23,10 +24,44 @@ export default function MushroomComparisonPage() {
       </div>
 
       {/* ✅ Scrollable Content Section */}
-      <div className="flex-1 w-full overflow-y-auto px-4 pb-20">
+      <div className="flex-1 w-full overflow-y-auto px-4 pb-40">
 
         {/* ✅ Reusable Warning Label Component */}
         <WarningLabel /> 
+
+        <ComparisonTable 
+          userMushroom={{
+            imageSrc: "/icons/yourPhoto.png",
+            attributes: [
+              { label: "Cap Shape", userValue: "Flat" },
+              { label: "Cap Color", userValue: "Brown" },
+              { label: "Cap Texture", userValue: "Smooth" },
+              { label: "Gills Type", userValue: "Free" },
+              { label: "Gills Color", userValue: "White" },
+              { label: "Stem Shape", userValue: "Slender" },
+              { label: "Stem Color", userValue: "White" },
+              { label: "Stem Ring", userValue: "Absent" },
+              { label: "Habitat", userValue: "?" }
+            ]
+          }}
+          comparedMushroom={{
+            imageSrc: "/icons/deathcap.png",
+            title: "Death Cap",
+            accuracy: "97% Match",
+            attributes: [
+              { label: "Cap Shape", comparedValue: "Flat" },
+              { label: "Cap Color", comparedValue: "Yellow" },
+              { label: "Cap Texture", comparedValue: "Smooth" },
+              { label: "Gills Type", comparedValue: "Free" },
+              { label: "Gills Color", comparedValue: "White" },
+              { label: "Stem Shape", comparedValue: "Slender" },
+              { label: "Stem Color", comparedValue: "White" },
+              { label: "Stem Ring", comparedValue: "Absent" },
+              { label: "Habitat", comparedValue: "Near oak/beech", warning: true }
+            ]
+          }}
+        />
+
 
       </div>
 
