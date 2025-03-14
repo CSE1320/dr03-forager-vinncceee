@@ -44,7 +44,7 @@ export default function MushroomPage() {
 
         {/* ✅ "Not What You Expected?" & Report Error */}
         <div className="flex items-center justify-between mt-2 px-4">
-          <p className="text-[#314053] text-[12px] font-nunito font-normal ml-8">Not what you expected?</p>
+          <p className="text-[#314053] text-[13px] font-nunito font-normal ml-8">Not what you expected?</p>
           <button className="w-[120px] h-[35px] bg-[#FF5050] text-white text-[14px] font-nunito font-bold last:rounded-[10px] flex items-center justify-center whitespace-nowrap pr-1 px-3 mr-8">
             Report Error
             <img src="/icons/rightButton.svg" alt=">" className="w-8 h-8" />
@@ -60,6 +60,19 @@ export default function MushroomPage() {
           <p className="text-white text-[16px] font-nunito font-normal mt-1">
             This is a toxic species, proceed with caution.
           </p>
+        </div>
+        
+        {/* ✅ Compare Button (Navigates to /comparison) */}
+        <div className="w-full flex justify-end mt-6">
+          <button 
+            className="flex items-center bg-transparent border-none cursor-pointer"
+            onClick={() => router.push("/comparison")} // ✅ Click to navigate
+          >
+            <span className="text-[#888787] text-[14px] font-nunito font-normal">
+              Compare
+            </span>
+            <img src="/icons/rightIcon.svg" alt=">" className="w-5 h-5 ml-1" />
+          </button>
         </div>
 
         {/* ✅ Example Content */}
