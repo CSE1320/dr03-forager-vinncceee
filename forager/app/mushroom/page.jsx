@@ -10,13 +10,6 @@ import Mushroom from "@/components/Mushroom";
 export default function MushroomPage() {
   const router = useRouter();
   const [showMessage, setShowMessage] = useState(false);
-  const [mushrooms, setMushrooms] = useState([  // ✅ Store mushroom data in state
-    { imageSrc: "/icons/deathCapImg.png", title: "Death Cap", showWarning: true, category: "Poisonous", tags: "", region: "Texas" },
-    { imageSrc: "/icons/puffballimg.png", title: "Puffball", showWarning: false, category: "Good for Broths", tags: "", region: "North America" },
-    { imageSrc: "/icons/destroyingangelimg.png", title: "Destroying Angel", showWarning: true, category: "Poisonous", tags: "", region: "Europe" },
-    { imageSrc: "/icons/falsedeathimg.png", title: "False Death Cap", showWarning: true, category: "Poisonous", tags: "", region: "Texas" },
-    { imageSrc: "/icons/paddystrawimg.png", title: "Paddy Straw", showWarning: false, category: "Medicinal", tags: "", region: "Asia" }
-  ]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {

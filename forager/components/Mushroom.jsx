@@ -1,11 +1,20 @@
 "use client";
+import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 
-const Mushroom = ({ onAddFavorite }) => {  // ✅ Accept `onAddFavorite` as a prop
+const Mushroom = ({ onAddFavorite }) => {  
   const searchParams = useSearchParams();
   
   const title = searchParams.get("title") || "Unknown Mushroom";
   const imageSrc = "/icons/deathCapBigImg.svg"; 
+
+  // ✅ State to track if the item is favorited
+  const [isFavorited, setIsFavorited] = useState(false);
+
+  const handleFavoriteClick = () => {
+    setIsFavorited(true);
+    onAddFavorite(title);
+  };
 
   return (
     <div className="w-full flex flex-col items-center px-4">
@@ -39,13 +48,41 @@ const Mushroom = ({ onAddFavorite }) => {  // ✅ Accept `onAddFavorite` as a pr
           </p>
         </div>
 
-        {/* ✅ Favorite Button */}
-        <img 
-          src="/icons/addFavoriteButton.svg" 
-          alt="Add to Favorites" 
-          className="w-19 h-19 cursor-pointer mr-12"
-          onClick={() => onAddFavorite(title)}  // ✅ Call function when clicked
-        />
+        {/* ✅ Favorite Button / Star Toggle */}
+        <div className="relative w-12 h-12 flex items-center justify-center mr-16">
+          {!isFavorited ? (
+            <img 
+              src="/icons/addFavoriteButton.svg" 
+              alt="Add to Favorites" 
+              className="w-18 h-18 cursor-pointer"
+              onClick={handleFavoriteClick}  
+            />
+          ) : (
+            <img 
+              src="/icons/star.png" 
+              alt="Favorited" 
+              className="w-15 h-18 object-contain"
+            />
+          )}
+        </div>
+      </div>
+
+      {/* ✅ Fast Facts Section */}
+      <div className="w-[290px] h-[168px] flex-shrink-0 rounded-[40px] bg-[#8E4A49] mt-2 p-6 text-white font-nunito">
+        <h3 className="text-[20px] font-semibold -mt-3 ml-2 ">Fast Facts</h3>
+        <ul className="text-[16px] space-y-1 ml-2 ">
+          <li> Cap Diameter: 5-15cm</li>
+          <li> Gill Color: White</li>
+          <li> Stem Color: White</li>
+          <li> Habitat: Temperate regions</li>
+        </ul>
+      </div>
+
+      {/* ✅ Additional Description Section */}
+      <div className="w-[290px] h-[264px] flex-shrink-0 text-[#000] font-nunito text-[16px] font-normal leading-[25px] mt-4">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.
       </div>
     </div>
   );
