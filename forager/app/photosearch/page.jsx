@@ -1,10 +1,12 @@
-import NavBar from '../../components/NavBar';
+import BackgroundScreen from "@/components/BackgroundScreen";
 
 export default function PhotoSearchPage() {
   return (
-    <div className="page">
-      <h1>Photo Search Page</h1>
-      <NavBar />
-    </div>
+    <>
+      <BackgroundScreen />
+      <div className="relative z-10">
+        {/* Add your page content here */}
+      </div>
+    </>
   );
 }

@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 const Mushroom = ({ onAddFavorite }) => {  
   const searchParams = useSearchParams();
   
-  const title = searchParams.get("title") || "Unknown Mushroom";
+  const title = searchParams.get("title") || "Death Cap";
   const imageSrc = "/icons/deathCapBigImg.svg"; 
 
   // ✅ State to track if the item is favorited
