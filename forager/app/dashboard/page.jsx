@@ -6,7 +6,7 @@ import NavBar from "../../components/NavBar";
 import Search from "../../components/Search";
 import Pill from "../../components/Pill";
 import FilterSettings from "@/components/FilterSettings";
-
+import Mushroom from "@/components/Mushroom";
 
 export default function DashboardPage() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -17,19 +17,27 @@ export default function DashboardPage() {
     category: []
   });
 
-  // ✅ Mushroom Data (Replace with dynamic data if needed)
-  const mushrooms = [
-    { imageSrc: "/icons/deathCapImg.png", title: "Death Cap", showWarning: true, category: "Poisonous", tags: "Favorites", region: "Texas" },
+  // ✅ Mushroom Data with State
+  const [mushrooms, setMushrooms] = useState([
+    { imageSrc: "/icons/deathCapImg.png", title: "Death Cap", showWarning: true, category: "Poisonous", tags: "", region: "Texas" },
     { imageSrc: "/icons/puffballimg.png", title: "Puffball", showWarning: false, category: "Good for Broths", tags: "", region: "North America" },
-    { imageSrc: "/icons/destroyingangelimg.png", title: "Destroying Angel", showWarning: true, category: "Poisonous", tags: "Favorites", region: "Europe" },
+    { imageSrc: "/icons/destroyingangelimg.png", title: "Destroying Angel", showWarning: true, category: "Poisonous", tags: "", region: "Europe" },
     { imageSrc: "/icons/falsedeathimg.png", title: "False Death Cap", showWarning: true, category: "Poisonous", tags: "", region: "Texas" },
     { imageSrc: "/icons/paddystrawimg.png", title: "Paddy Straw", showWarning: false, category: "Medicinal", tags: "", region: "Asia" }
-  ];
+  ]);
 
-  // ✅ Filter mushrooms based on selected filters
+  // ✅ Function to Add Favorite Tag
+  const handleAddFavorite = (title) => {
+    setMushrooms((prevMushrooms) =>
+      prevMushrooms.map((mushroom) =>
+        mushroom.title === title ? { ...mushroom, tags: "Favorites" } : mushroom
+      )
+    );
+  };
+
+  // ✅ Filter Mushrooms Based on Search & Filters
   const filteredMushrooms = mushrooms.filter((mushroom) => {
     const matchesSearch = mushroom.title.toLowerCase().includes(searchTerm.toLowerCase());
-
     const matchesTags = selectedFilters.tags.length === 0 || selectedFilters.tags.includes(mushroom.tags);
     const matchesRegion = selectedFilters.regions.length === 0 || selectedFilters.regions.includes(mushroom.region);
     const matchesCategory = selectedFilters.category.length === 0 || selectedFilters.category.includes(mushroom.category);
@@ -67,7 +75,7 @@ export default function DashboardPage() {
           My Collection
         </h2>
 
-        {/* ✅ Selected Filters (Shows Below "My Collection") */}
+        {/* ✅ Selected Filters */}
         {selectedFilters.tags.length > 0 || selectedFilters.regions.length > 0 || selectedFilters.category.length > 0 ? (
           <div className="flex flex-wrap gap-2 mt-3 self-start">
             {selectedFilters.tags.map(tag => <Pill key={tag} label={tag} isSelected={true} />)}
@@ -76,7 +84,7 @@ export default function DashboardPage() {
           </div>
         ) : null}
 
-        {/* ✅ Mushroom Cards Grid - Display only filtered mushrooms */}
+        {/* ✅ Mushroom Cards Grid */}
         <div className="grid grid-cols-3 gap-4 mt-6 justify-center">
           {filteredMushrooms.length > 0 ? (
             filteredMushrooms.map((mushroom, index) => (
@@ -85,6 +93,7 @@ export default function DashboardPage() {
                 imageSrc={mushroom.imageSrc}
                 title={mushroom.title}
                 showWarning={mushroom.showWarning}
+                tags={mushroom.tags} // ✅ Ensure updated tag is passed
               />
             ))
           ) : (
@@ -94,6 +103,7 @@ export default function DashboardPage() {
           )}
         </div>
       </div>
+      
 
       {/* Filter Modal - Show when `isFilterOpen` is true */}
       {isFilterOpen && (
@@ -110,6 +120,6 @@ export default function DashboardPage() {
 
       {/* NavBar - Ensure it Stays Below the Modal */}
       <NavBar className="z-[50]" />
-    </div>      
+    </div>   
   );
 }
